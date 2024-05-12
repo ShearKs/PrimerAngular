@@ -1,0 +1,42 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: white;
+    }
+
+    input {
+        padding: 5px;
+        margin: 5px;
+        width: 50px;
+        border-radius: 15px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 25px;
+        font-weight: bolder;
+    }
+
+    .letras{
+        margin-top: 50px;
+    }
+
+    #letra{
+        width: 100px;
+        text-align: center;
+        padding: 15px;
+        font-size: 33px;
+    }
+
+    button{
+        margin:20px;
+        width: 150px;
+    }
+
+
+}

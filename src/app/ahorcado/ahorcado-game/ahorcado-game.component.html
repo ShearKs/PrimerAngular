@@ -1,0 +1,32 @@
+<div class="main">
+
+    <h1>Juego del Ahorcado</h1>
+    <button>Comenzar Juego</button>
+
+    <!--Div donde se mostraran todas la palabra guardadas en input-->
+    <!-- <div class="letras" *ngFor="let item of palabraAdivinar">
+
+        <input />
+        
+    </div> -->
+
+    <!-- Versión de angular 17 -->
+    <!-- <div class="letras" id="letras" #letras>
+        @for(item of palabraAdivinar ; track item){
+            <input  type = "text" readonly/>
+        }
+    </div> -->
+
+    <div class="letras" id="letras">
+        <ng-container *ngFor="let letra of letrasAdivinadas">
+            <input type="text" [value]="letra" readonly>
+        </ng-container>
+    </div>
+
+    <h3>Tienes {{intentos}} intentos</h3>
+
+    <h2>Escribe una letra</h2>
+    <input [formControl]="letraSele" type="text" id="letra" maxlength="1">
+    <button (click)="consultarLetra()">Adivina</button>
+
+</div>

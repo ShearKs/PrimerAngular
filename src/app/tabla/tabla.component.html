@@ -1,0 +1,17 @@
+
+<h1>{{tituloTabla}}</h1>
+<h2>{{pruebaEntrada}}</h2>
+
+<table>
+    <tbody>
+        <tr>
+            <th *ngFor="let item of arrayFilas">{{item}}</th>
+        </tr>
+        <tr *ngFor="let item of arrayFilas">
+            <td *ngFor="let item of arrayFilas">{{item}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<button (click)="emitirEvento()">Evento Tabla</button>

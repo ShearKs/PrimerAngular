@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>{{pokemon?.name}}</h1>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Pokemon</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{pokemon.sprites.front_default}}" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      {{pokemon.name}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #noCargado>
+  <h1>No Cargado</h1>
+</ng-template>
+
+
+<mat-dialog-actions *ngIf="data">
+
+  <button mat-button (click)="cerrarModal()">Cerrar</button>
+
+</mat-dialog-actions>
+
+<!-- <mat-dialog-actions *ngIf="data">
+
+  <button mat-button (click)="cerrarModal(true)">Cerrar</button>
+  <button mat-button (click)="cerrarModal(false)">Cancelar</button>
+
+</mat-dialog-actions>  -->

@@ -1,0 +1,18 @@
+<div class="login">
+    <div class="formulario">
+        <h1>Ejercicio Formulario</h1>
+        <form [formGroup] = "formularioControlEjer">
+            <label for="usuario">Usuario*</label>
+            <input formControlName="usuario" name="usuario" type="text" autocomplete="false">
+            <label for="contrasena">Contraseña*</label>
+            <input  formControlName="password" name="contrasena" type="password" autocomplete="false">
+        </form>
+        <button (click)="enviarFormulario()">Enviar</button>
+    </div>
+
+    <div id = "salida" class="salida">
+        <h2>Salida</h2>
+        <label>{{userForm}}</label>
+        <label>{{passForm}}</label>
+    </div>
+</div>

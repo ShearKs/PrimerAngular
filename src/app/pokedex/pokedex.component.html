@@ -1,0 +1,40 @@
+<table mat-table [dataSource]="listaPokemon">
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let elemento">
+            {{elemento.name}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="url">
+        <th mat-header-cell *matHeaderCellDef>Ruta</th>
+        <td mat-cell *matCellDef="let elemento"> {{elemento.url}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef>Imagen</th>
+        <td mat-cell *matCellDef="let elemento"> {{elemento.image}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="a">
+        <th *matHeaderCellDef></th>
+        <td *matCellDef="let elemento">
+            <div class="botones">
+                <a [routerLink]="obtenerEnlacePokemon(elemento.url,true)" matTooltip="Ver en su página">
+
+                    <button><mat-icon>visibility</mat-icon></button>
+                </a>
+                <button>
+                    <mat-icon (click)="verPokemonModal(elemento.url)"
+                    matTooltip="Ver en su ventana modal">open_in_new
+                </mat-icon></button>
+            </div>
+        </td>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

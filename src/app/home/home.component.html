@@ -1,0 +1,21 @@
+<p>home works!</p>
+<!-- <button (click)="router.navigateByUrl('tabla')">Botoncico</button> -->
+
+<h1>Formulario 1</h1>
+<input type="text" [(ngModel)]="formulario.usuario">
+<input type="password" [(ngModel)]="formulario.password">
+<button (click)="enviarFormulario()">Enviar Formulario</button>
+
+
+<h1>Formulario con control</h1>
+<form [formGroup] = "formularioControl">
+    <input formControlName="usuario"   type="text" autocomplete="false" >
+    <input formControlName="password" type="password" autocomplete="false">
+</form>
+<button (click)="enviarFormulario()">Enviar Formulario Control</button>
+
+<button></button>
+
+
+
+
