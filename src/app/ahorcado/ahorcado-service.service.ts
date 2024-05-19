@@ -8,7 +8,8 @@ export class AhorcadoServiceService {
   private intentos: number;
   private perdido: string;
 
-  public letrasAdivinadas: Set<string> = new Set<string>();
+  //public letrasAdivinadas: Set<string> = new Set<string>();
+  public letrasAdivinadas: Map<number, string> = new Map<number, string>()
 
 
   public intentosSubject: Subject<number> = new Subject<number>();
@@ -30,19 +31,28 @@ export class AhorcadoServiceService {
     this.letrasAdivinadas$.next(letras);
   }
 
-  public eliminarIntento(): void {
+  public eliminarIntento(): string {
+    let mensajeError = "";
+    if (this.intentos === 0) {
+      mensajeError = "Te has quedado sin intentos";
+    } else {
+      this.intentos--;
+      this.intentosSubject.next(this.intentos);
+    }
+    return mensajeError;
 
-    this.intentos--;
-    this.intentosSubject.next(this.intentos);
   }
 
   public actualizarAhorcado(): void {
 
-    
+
+
+
+
   }
 
 
-  public saberLetrasAdivinadas(): Set<String> {
+  public saberLetrasAdivinadas(): Map<number, string> {
     return this.letrasAdivinadas;
   }
 

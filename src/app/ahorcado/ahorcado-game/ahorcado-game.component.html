@@ -1,26 +1,29 @@
-<div class="main">
+<div class="principal">
 
     <h1>Juego del Ahorcado</h1>
-    <button>Comenzar Juego</button>
-
-    <!--Div donde se mostraran todas la palabra guardadas en input-->
-    <!-- <div class="letras" *ngFor="let item of palabraAdivinar">
-
-        <input />
-        
+    <button (click)="comenzarJuego()">Comenzar Juego</button>
+    <!-- Versión de angular 17 -->
+    <!-- <div class="letras" id="letras" #letras>
+        @for(item of palabraAdivinar ; track item){
+            <input  type = "text" readonly [attr.id]="'letra-' + item"/>
+        }
     </div> -->
 
-    <!-- Versión de angular 17 -->
-    <div class="letras" id="letras" #letras>
-        @for(item of palabraAdivinar ; track item){
-            <input  type = "text" readonly/>
-        }
+    <div class="main" *ngIf="juegoActivo">
+        <div class="letras" id="letras" #letras>
+            <input *ngFor="let item of palabraAdivinar; let i = index" [value]="letrasAdivinadas[i]" type="text"
+                readonly [attr.id]="'letra-' + i" />
+        </div>
+
+        <h3>Tienes {{intentos}} intentos</h3>
+        <h2 [ngClass]="{'mensajeFinal': true, 'error': false}">{{mensajeFinal}}</h2>
+
+
+        <h2>Escribe una letra</h2>
+        <input [formControl]="letraSele" type="text" id="letra" maxlength="1">
+
+        <div class="main" *ngIf="botonActivo">
+            <button (click)="consultarLetra()">Adivina</button>
+        </div>
     </div>
-
-    <h3>Tienes {{intentos}} intentos</h3>
-
-    <h2>Escribe una letra</h2>
-    <input [formControl]="letraSele" type="text" id="letra" maxlength="1">
-    <button (click)="consultarLetra()">Adivina</button>
-
 </div>
