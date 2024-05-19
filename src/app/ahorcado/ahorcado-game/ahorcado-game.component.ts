@@ -10,10 +10,9 @@ import { AhorcadoServiceService } from '../ahorcado-service.service';
   templateUrl: './ahorcado-game.component.html',
   styleUrl: './ahorcado-game.component.scss'
 })
-export class AhorcadoGameComponent implements OnInit, AfterViewInit {
+export class AhorcadoGameComponent implements OnInit {
 
   @ViewChild('letras') palabras!: ElementRef;
-
 
   //public palabraAdivinar: string = "palabra";
   public palabraAdivinar: Array<string> = ['p', 'a', 'l', 'a', 'b', 'r', 'a'];
@@ -24,20 +23,17 @@ export class AhorcadoGameComponent implements OnInit, AfterViewInit {
 
   public perdido: string;
 
-  constructor(private ahorcadoService: AhorcadoServiceService,private cdr: ChangeDetectorRef) {
+  constructor(private ahorcadoService: AhorcadoServiceService) {
     this.letraSele = new FormControl('', Validators.maxLength(1))
     this.intentos = ahorcadoService.saberIntentos();
     this.perdido = "";
-  }
-  ngAfterViewInit(): void {
-
   }
 
   ngOnInit(): void {
     this.ahorcadoService.intentosSubject.subscribe((nuevoIntentos: number) => {
       this.intentos = nuevoIntentos;
     })
-    //console.log(this.palabras)
+
   }
   public mostrarLetra() {
     const letra = this.letraSele.value;
@@ -53,13 +49,15 @@ export class AhorcadoGameComponent implements OnInit, AfterViewInit {
       if (letra == this.palabraAdivinar[i]) {
         hijos[i].textContent = letra;
         console.log("Has adiviniado una letra en el ahoracado")
+        console.log("Has adivinado la letra: " + letra)
+
+        this.ahorcadoService.letrasAdivinadas.add(letra);
         break;
       }
     }
 
-    this.cdr.detectChanges();
-
     this.ahorcadoService.eliminarIntento();
-    console.log("Intentos que hay: " + this.ahorcadoService.saberIntentos)
+    console.log("Intentos que hay: " + this.ahorcadoService.saberIntentos())
+    console.log("Letras Adivinadas: " + Array.from(this.ahorcadoService.saberLetrasAdivinadas()).join(', '));
   }
 }
